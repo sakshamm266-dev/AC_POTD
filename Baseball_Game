@@ -1,0 +1,39 @@
+import java.util.*;
+class Baseball_Game {
+    public int calPoints(String[] operations) {
+       int len=operations.length,index=0;
+       int record[]=new int[len];
+       for(int i=0;i<len;i++){
+        String op=operations[i];
+        if(op.equals("C")){
+            index-=1;
+        }
+        else if(op.equals("D")){
+            record[index]=2*record[index-1];
+            index+=1;
+            }
+        else if(op.equals("+")){
+            record[index]=record[index-1]+record[index-2];
+            index+=1;
+            }else{
+            record[index]=Integer.parseInt(op);
+            index+=1;
+            }
+             }
+             int sum=0;
+             for(int i=0;i<index;i++){
+                sum+=record[i];
+             }
+             return(sum);
+       } 
+       public static void main(string args[]){
+        scanner sc=new scanner(system.in);
+        int size=sc.nextint();
+        string operations[]=new string[size];
+        for(int i=0;i<size;i++){
+            operations[i]=sc.next();            
+       }
+       system.out.println(calPoints(operations));
+       }
+
+    }
